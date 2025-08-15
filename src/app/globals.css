@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FEFCED;
+  --foreground: #A44214;
+  --pc-padding: calc(var(--spacing) * 35);
+
+  background-color: var(--background);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-inter: var(--font-inter);
+  --font-protest-strike: var(--font-protest-strike);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Hero highlight animation (imagem da carne) */
+@keyframes hero-float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-3deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+.hero-highlight {
+  display: inline-block;
+  width: auto;
+  max-width: 60vw;
+}
+
+.hero-highlight img {
+  display: block;
+  transform-origin: 50% 50%;
+  animation: hero-float 4s ease-in-out infinite;
+  will-change: transform, filter;
+  transition: filter 200ms ease, transform 200ms ease;
+  filter: drop-shadow(0 28px 30px rgba(0,0,0,0.35));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-highlight {
+    animation: none;
+    transition: none;
+  }
 }
