@@ -9,26 +9,26 @@ interface MostVotedCardProps {
     alt?: string;
 }
 
-export default function MostVotedCard({ imageSrc, title, href = "#", alt }: MostVotedCardProps) {
+export default function MostVotedCard({ imageSrc, title, href = "#", alt }: MostVotedCardProps): React.ReactElement {
     const altText = alt ?? title;
 
     return (
         <article className="flex flex-col" aria-label={title}>
-            <figure className="bg-foreground pb-2 space-y-2 border-3 border-foreground rounded-t-xl flex flex-col justify-center items-center text-background">
+            <figure className="bg-foreground pb-1 space-y-1 border-3 border-foreground rounded-t-lg flex flex-col justify-center items-center text-background">
                 <Image
                     src={imageSrc}
                     alt={altText}
-                    width={500}
-                    height={300}
-                    className="-mt-5 object-cover w-full h-auto"
+                    width={400}
+                    height={220}
+                    className="-mt-3 object-cover w-full h-auto rounded-t-lg"
                     priority={false}
                 />
-                <figcaption className="text-background font-bold text-xl py-2 text-center">{title}</figcaption>
+                <figcaption className="text-background font-bold text-sm py-1 text-center">{title}</figcaption>
             </figure>
 
             <Link
                 href={href}
-                className="bg-background font-bold hover:bg-foreground/30 py-5 text-xl border-3 border-foreground rounded-b-xl flex justify-center items-center text-foreground"
+                className="bg-background font-semibold hover:bg-foreground/30 transition-colors duration-200 ease-in-out py-3 text-sm border-2 border-foreground rounded-b-lg flex justify-center items-center text-foreground"
                 aria-label={`Ver receita: ${title}`}
             >
                 Ver receita

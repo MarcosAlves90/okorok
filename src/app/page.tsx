@@ -9,7 +9,7 @@ export default function Home() {
       <Hero />
       <HeroTicker />
       <MostVoted />
-      <AllRecipes/>
+      <AllRecipes />
     </div>
   );
 }

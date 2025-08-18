@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import styles from "./hero.module.css";
 
 export default function Hero(): React.ReactElement {
     return (
@@ -14,13 +13,13 @@ export default function Hero(): React.ReactElement {
             className="absolute inset-0 object-cover z-[1]"
             />
             <div className="bg-foreground h-3 absolute bottom-0 left-0 right-0 z-[4]" aria-hidden="true" />
-            <div className="bg-foreground h-7 w-[36rem] absolute bottom-3 left-1/2 -translate-x-1/2 z-[4] rounded-t-2xl" aria-hidden="true" />
+            <div className="bg-foreground h-6 w-[32rem] absolute bottom-3 left-1/2 -translate-x-1/2 z-[4] rounded-t-xl" aria-hidden="true" />
             <div className="z-[3] flex items-start w-full justify-between">
                 <div className="pt-[6.25rem]">
                     <h2 className="font-protest-strike text-8xl">SUCULENTA E<br /> SABOROSA!</h2>
                     <p className="text-2xl">as melhores receitas, só aqui.</p>
                 </div>
-            <div className={styles.heroHighlight}>
+            <div>
                     <Image
                         src="https://res.cloudinary.com/dyenpzpcr/image/upload/v1755488143/hero-highlight_ydet61.png"
                         alt="Ilustração em destaque relacionada às receitas"
