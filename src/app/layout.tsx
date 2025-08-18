@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Protest_Strike } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/organisms/navbar";
+import Navbar from "@/components/organisms/Navbar";
 
 const inter = Inter({
   variable: "--font-inter",
