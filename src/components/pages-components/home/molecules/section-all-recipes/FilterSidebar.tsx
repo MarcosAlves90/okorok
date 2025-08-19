@@ -5,8 +5,8 @@ import { PanelLeft } from 'lucide-react';
 
 export default function FilterSidebar(): React.ReactElement {
     return (
-        <div className="bg-[#8a3b1a] rounded-xl shadow-lg text-sm text-white flex flex-col" style={{ height: '640px' }}>
-            <div className="flex items-center justify-between mb-4 px-5 py-3 rounded-t-xl bg-foreground-dark flex-none">
+        <div className="bg-[#8a3b1a] rounded-lg text-sm text-white flex flex-col" style={{ height: '640px' }}>
+            <div className="flex items-center justify-between mb-4 px-5 py-3 rounded-t-lg bg-foreground-dark flex-none">
                 <h3 className="font-semibold">Filtros</h3>
                 <button aria-label="toggle-filters" className="w-7 h-7 flex items-center justify-center text-white">
                     <PanelLeft size={25} />

@@ -5,11 +5,11 @@ import AllRecipes from "@/components/pages-components/home/molecules/section-all
 
 export default function Home() {
   return (
-    <div className="">
+    <main className="">
       <Hero />
       <HeroTicker />
       <MostVoted />
       <AllRecipes />
-    </div>
+    </main>
   );
 }

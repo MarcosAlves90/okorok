@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import React from 'react';
 import Link from 'next/link';
@@ -18,7 +18,7 @@ export default function NavItem({ href, label, scrolled, ariaLabel }: NavItemPro
         <li className="text-xs md:text-sm lg:text-base">
             <Link
                 href={href}
-                className={`cursor-pointer font-medium pb-1 transition-colors duration-200 ease-in-out ${underlineClass}`}
+                className={`cursor-pointer font-medium pb-1 ease-in-out ${underlineClass}`}
                 aria-label={ariaLabel}
             >
                 {label}

@@ -3,22 +3,31 @@
 import { Heart, Search } from "lucide-react";
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import React, { useEffect, useState } from 'react';
 import NavItem from './NavItem';
 
 export default function Navbar(): React.ReactElement {
+    const pathname = usePathname();
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
+        // Se não for a página inicial, isso mantem o scrolled sempre ativo
+        if (pathname && pathname !== '/') {
+            setScrolled(true);
+            return;
+        }
+
+        // Na página inicia, usa o listener normal
         const onScroll = () => setScrolled(window.scrollY > 10);
         onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
-    }, []);
+    }, [pathname]);
 
     return (
-    <nav role="navigation" aria-label="Navegação principal" className={`py-3 px-(--pc-padding) flex fixed w-full top-0 right-0 left-0 z-50 items-center justify-between text-xs md:text-sm lg:text-base transition-all duration-300 ease-in-out border-b-2 ${scrolled ? 'bg-background/70 backdrop-blur-2xl text-foreground border-foreground' : 'bg-transparent text-background border-background/5'}`}>
+    <nav role="navigation" aria-label="Navegação principal" className={`py-3 px-(--pc-padding) flex fixed w-full top-0 right-0 left-0 z-50 items-center justify-between text-xs md:text-sm lg:text-base transition-all duration-200 ease-in-out border-b-2 ${scrolled ? 'bg-background/70 backdrop-blur-2xl text-foreground border-foreground' : 'bg-transparent text-background border-background/5'}`}>
             <div className="h-10 md:h-12 lg:h-14 flex items-center">
                 <Link href="/" aria-label="Ir para a página inicial" className="flex items-center cursor-pointer">
                     <Image src="/logo.png" alt="Logotipo Okorok" width={60} height={60} className="h-full w-auto object-contain" priority />
@@ -29,7 +38,7 @@ export default function Navbar(): React.ReactElement {
                     <NavItem href="/" label="Início" scrolled={scrolled} ariaLabel="Início" />
                     <NavItem href="/#most-voted" label="Mais votadas" scrolled={scrolled} ariaLabel="Mais votadas" />
                     <NavItem href="/#all-recipes" label="Categorias" scrolled={scrolled} ariaLabel="Categorias" />
-                    <NavItem href="/about" label="Sobre" scrolled={scrolled} ariaLabel="Sobre" />
+                    <NavItem href="/sobre" label="Sobre" scrolled={scrolled} ariaLabel="Sobre" />
                     <NavItem href="/contact" label="Contato" scrolled={scrolled} ariaLabel="Contato" />
                 </ul>
                 <div className="flex items-center gap-5">
