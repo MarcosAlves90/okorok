@@ -8,6 +8,8 @@ html {
   --background: #FEFCED;
   --foreground: #A44214;
   --foreground-dark: #712D0D;
+  --background-gray: #CBC9BD;
+
   --pc-padding: calc(var(--spacing) * 35);
 
   background-color: var(--background);
@@ -17,6 +19,8 @@ html {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-foreground-dark: var(--foreground-dark);
+  --color-background-gray: var(--background-gray);
+
   --font-inter: var(--font-inter);
   --font-protest-strike: var(--font-protest-strike);
 }

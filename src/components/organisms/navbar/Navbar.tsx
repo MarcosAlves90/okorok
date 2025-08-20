@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { Heart, Search } from "lucide-react";
 import Image from 'next/image';
@@ -39,15 +39,15 @@ export default function Navbar(): React.ReactElement {
                     <NavItem href="/#most-voted" label="Mais votadas" scrolled={scrolled} ariaLabel="Mais votadas" />
                     <NavItem href="/#all-recipes" label="Categorias" scrolled={scrolled} ariaLabel="Categorias" />
                     <NavItem href="/sobre" label="Sobre" scrolled={scrolled} ariaLabel="Sobre" />
-                    <NavItem href="/contact" label="Contato" scrolled={scrolled} ariaLabel="Contato" />
+                    <NavItem href="/contato" label="Contato" scrolled={scrolled} ariaLabel="Contato" />
                 </ul>
                 <div className="flex items-center gap-5">
-                    <button
-                        type="button"
+                    <Link
+                        href="/login"
                         aria-label="Minha conta"
                         className={`py-1 font-medium px-4 rounded-xl cursor-pointer text-xs md:text-sm lg:text-base transition-colors duration-300 ease-in-out ${scrolled ? 'bg-foreground text-background hover:bg-foreground/30 hover:text-foreground' : 'text-foreground bg-background hover:bg-foreground hover:text-background'}`}>
                         Minha conta
-                    </button>
+                    </Link>
                     <button type="button" className="inline-flex items-center justify-center" aria-label="Favoritos" title="Favoritos">
                         <Heart className="text-[#FF5353] fill-none hover:fill-[#FF5353] transition-colors duration-300 ease-in-out cursor-pointer stroke-current" size={28} aria-hidden="true" />
                     </button>
