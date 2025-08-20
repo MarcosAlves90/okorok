@@ -10,12 +10,11 @@ export default function RegisterForm() {
     const [passwordConfirm, setPasswordConfirm] = useState("");
     const [error, setError] = useState("");
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
-        const email = String(form.get("email") ?? "");
-        const pwd = String(form.get("password") ?? "");
-        const pwdConfirm = String(form.get("passwordConfirm") ?? "");
+    const pwd = String(form.get("password") ?? "");
+    const pwdConfirm = String(form.get("passwordConfirm") ?? "");
 
         if (pwd !== pwdConfirm) {
             setError("As senhas não coincidem");
@@ -23,7 +22,17 @@ export default function RegisterForm() {
         }
 
         setError("");
-        console.log("Cadastrar:", { email, pwd });
+        try {
+            const res = await fetch('/api/usuarios', { method: 'POST', body: form });
+            const json = await res.json();
+            if (!res.ok) {
+                setError(json?.message ?? 'Erro ao cadastrar');
+                return;
+            }
+            window.location.href = '/login';
+        } catch {
+            setError('Erro de rede');
+        }
     };
 
     const handlePasswordChange = (value: string) => {
@@ -50,6 +59,21 @@ export default function RegisterForm() {
         >
             <div className="grid grid-cols-1 gap-4">
                 <AvatarInput />
+
+                <label htmlFor="name" className="flex flex-col text-left">
+                    <span className="text-sm text-foreground mb-1 font-semibold">Nome</span>
+                    <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="Seu nome de usuário"
+                        autoComplete="name"
+                        required
+                        aria-required="true"
+                        className="w-full bg-background-gray placeholder:text-foreground/60 border-2 border-foreground rounded-xl px-4 py-3 focus:outline-none"
+                    />
+                </label>
+
                 <label htmlFor="email" className="flex flex-col text-left">
                     <span className="text-sm text-foreground mb-1 font-semibold">E-mail</span>
                     <input

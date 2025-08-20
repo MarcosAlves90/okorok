@@ -3,7 +3,7 @@
 import { Heart, Search } from "lucide-react";
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import React, { useEffect, useState } from 'react';
 import NavItem from './NavItem';
@@ -11,6 +11,17 @@ import NavItem from './NavItem';
 export default function Navbar(): React.ReactElement {
     const pathname = usePathname();
     const [scrolled, setScrolled] = useState(false);
+    const router = useRouter();
+
+    const handleAccountClick = () => {
+        try {
+            const raw = localStorage.getItem('user');
+            if (raw) router.push('/perfil');
+            else router.push('/login');
+        } catch {
+            router.push('/login');
+        }
+    };
 
     useEffect(() => {
         // Se não for a página inicial, isso mantem o scrolled sempre ativo
@@ -42,12 +53,14 @@ export default function Navbar(): React.ReactElement {
                     <NavItem href="/contato" label="Contato" scrolled={scrolled} ariaLabel="Contato" />
                 </ul>
                 <div className="flex items-center gap-5">
-                    <Link
-                        href="/login"
+                    <button
+                        type="button"
                         aria-label="Minha conta"
+                        title="Minha conta"
+                        onClick={handleAccountClick}
                         className={`py-1 font-medium px-4 rounded-xl cursor-pointer text-xs md:text-sm lg:text-base transition-colors duration-300 ease-in-out ${scrolled ? 'bg-foreground text-background hover:bg-foreground/30 hover:text-foreground' : 'text-foreground bg-background hover:bg-foreground hover:text-background'}`}>
                         Minha conta
-                    </Link>
+                    </button>
                     <button type="button" className="inline-flex items-center justify-center" aria-label="Favoritos" title="Favoritos">
                         <Heart className="text-[#FF5353] fill-none hover:fill-[#FF5353] transition-colors duration-300 ease-in-out cursor-pointer stroke-current" size={28} aria-hidden="true" />
                     </button>
