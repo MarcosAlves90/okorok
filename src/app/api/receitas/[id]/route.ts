@@ -30,7 +30,9 @@ export async function DELETE(
             return json({ success: false, message: MSG.NOT_FOUND }, 404);
         }
 
-        // Deletar a receita
+        await query('DELETE FROM curtidas WHERE receita_id = $1', [id]);
+        await query('DELETE FROM marcados WHERE receita_id = $1', [id]);
+        
         await query('DELETE FROM receitas WHERE id = $1', [id]);
 
         return json({ success: true, message: MSG.SUCCESS });

@@ -1,5 +1,6 @@
 "use client"
 import React, { useRef, useState, useEffect } from 'react'
+import Image from 'next/image'
 import Button from '@/components/atoms/Button'
 import { Upload } from 'lucide-react'
 import { useRouter } from 'next/navigation'
@@ -94,10 +95,22 @@ export default function CreateRecipeClient() {
             <div className="grid grid-cols-1 grid-rows-2 w-full h-full gap-4">
                 <div
                     id="bloco-1"
-                    className={`h-full rounded-xl overflow-hidden relative ${!preview ? 'bg-placeholder' : ''}`}
-                    style={preview ? { backgroundImage: `url(${preview})`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined}
+                    className="h-full rounded-xl overflow-hidden relative bg-placeholder"
                 >
                     <input ref={fileRef} type="file" accept="image/*" onChange={onFile} className="hidden" />
+                    
+                    {preview && (
+                        <div className="absolute inset-0">
+                            <Image
+                                src={preview}
+                                alt="Pré-visualização da receita"
+                                fill
+                                className="object-cover"
+                                unoptimized
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/85" />
+                        </div>
+                    )}
 
                     <div className="relative z-10 h-full flex flex-col p-5">
                         <div className="flex-1 flex items-center justify-center">
@@ -120,8 +133,6 @@ export default function CreateRecipeClient() {
                             />
                         </div>
                     </div>
-
-                    {preview && <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/85" />}
                 </div>
 
                 <div id="bloco-2" className="h-full bg-foreground rounded-xl flex flex-col p-5">

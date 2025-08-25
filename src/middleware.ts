@@ -13,7 +13,7 @@ export function middleware() {
     // Content Security Policy básico
     response.headers.set(
         'Content-Security-Policy',
-        "default-src 'self'; img-src 'self' https://res.cloudinary.com data:; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self';"
+        "default-src 'self'; img-src 'self' https://res.cloudinary.com data: blob:; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self';"
     )
 
     return response
