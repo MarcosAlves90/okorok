@@ -1,0 +1,57 @@
+.wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.ticker {
+    display: flex;
+    align-items: center;
+    height: var(--ticker-height);
+    width: 100%;
+    position: relative;
+}
+
+.track {
+    display: flex;
+    gap: var(--gap);
+    align-items: center;
+    white-space: nowrap;
+    will-change: transform;
+    animation: scroll var(--duration) linear infinite;
+}
+
+.item {
+    display: inline-block;
+    padding: 0 0.5rem;
+    font-size: 1.125rem;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.ticker:focus .track,
+.ticker:hover .track {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .track {
+        animation: none;
+        transform: none;
+    }
+}
+
+.srOnly {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
