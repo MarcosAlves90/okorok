@@ -95,7 +95,7 @@ export default function CreateRecipeClient() {
             <div className="grid grid-cols-1 grid-rows-2 w-full h-full gap-4">
                 <div
                     id="bloco-1"
-                    className="h-full rounded-xl overflow-hidden relative bg-placeholder"
+                    className="h-full rounded-md overflow-hidden relative bg-placeholder"
                 >
                     <input ref={fileRef} type="file" accept="image/*" onChange={onFile} className="hidden" />
                     
@@ -114,7 +114,7 @@ export default function CreateRecipeClient() {
 
                     <div className="relative z-10 h-full flex flex-col p-5">
                         <div className="flex-1 flex items-center justify-center">
-                            <div className="mb-3 bg-background/30 rounded-xl">
+                            <div className="mb-3 bg-background/30 rounded-md">
                                 <Button variant="icon" size="md" onClick={openFile} className="inline-flex items-center gap-2">
                                     <Upload className="h-6 w-6" />
                                     {preview ? 'Trocar imagem' : 'Enviar imagem'}
@@ -135,24 +135,24 @@ export default function CreateRecipeClient() {
                     </div>
                 </div>
 
-                <div id="bloco-2" className="h-full bg-foreground rounded-xl flex flex-col p-5">
+                <div id="bloco-2" className="h-full bg-foreground rounded-md flex flex-col p-5">
                     <div className="w-full flex flex-col items-start gap-4 h-full">
                         <h3 className="text-sm font-medium">Categoria</h3>
                         <input
                             name="categoria"
                             placeholder="Ex: Sobremesa, Principal, Entrada"
-                            className="w-full rounded-xl bg-foreground-dark text-sm text-background border-0 ring-0 p-2 focus:outline-none focus:ring-0"
+                            className="w-full rounded-md bg-foreground-dark text-sm text-background border-0 ring-0 p-2 focus:outline-none focus:ring-0"
                         />
 
                         <h3 className="text-sm font-medium">Observações</h3>
                         <textarea
                             name="observacoes"
                             placeholder="Dicas, substituições ou notas adicionais"
-                            className="w-full h-20 rounded-xl bg-foreground-dark text-sm text-background border-0 ring-0 p-3 resize-vertical focus:outline-none focus:ring-0"
+                            className="w-full h-20 rounded-md bg-foreground-dark text-sm text-background border-0 ring-0 p-3 resize-vertical focus:outline-none focus:ring-0"
                         />
 
                         {error && (
-                            <div className="w-full p-3 bg-red-500/20 border border-red-500 rounded-xl">
+                            <div className="w-full p-3 bg-red-500/20 border border-red-500 rounded-md">
                                 <p className="text-sm text-red-200">{error}</p>
                             </div>
                         )}
@@ -172,12 +172,12 @@ export default function CreateRecipeClient() {
                 </div>
             </div>
 
-            <div id="bloco-3" className="h-full bg-foreground w-full rounded-xl flex flex-col items-start gap-4 p-5 overflow-auto">
+            <div id="bloco-3" className="h-full bg-foreground w-full rounded-md flex flex-col items-start gap-4 p-5 overflow-auto">
                 <h3 className="text-lg font-semibold">Ingredientes *</h3>
                 <textarea
                     name="ingredientes"
                     placeholder="Liste os ingredientes, um por linha"
-                    className="w-full h-28 rounded-xl bg-foreground-dark text-sm text-background border-0 ring-0 p-3 resize-vertical focus:outline-none focus:ring-0"
+                    className="w-full h-28 rounded-md bg-foreground-dark text-sm text-background border-0 ring-0 p-3 resize-vertical focus:outline-none focus:ring-0"
                     required
                 />
 
@@ -185,7 +185,7 @@ export default function CreateRecipeClient() {
                 <textarea
                     name="modo"
                     placeholder="Descreva o passo a passo"
-                    className="w-full h-70 rounded-xl bg-foreground-dark text-sm text-background border-0 ring-0 p-3 resize-vertical focus:outline-none focus:ring-0"
+                    className="w-full h-70 rounded-md bg-foreground-dark text-sm text-background border-0 ring-0 p-3 resize-vertical focus:outline-none focus:ring-0"
                     required
                 />
 
@@ -195,7 +195,7 @@ export default function CreateRecipeClient() {
                         <input
                             name="tempo"
                             placeholder="Ex: 30 min"
-                            className="w-full rounded-xl bg-foreground-dark text-sm text-background border-0 ring-0 p-2 focus:outline-none focus:ring-0"
+                            className="w-full rounded-md bg-foreground-dark text-sm text-background border-0 ring-0 p-2 focus:outline-none focus:ring-0"
                         />
                     </div>
 
@@ -204,7 +204,7 @@ export default function CreateRecipeClient() {
                         <input
                             name="rendimento"
                             placeholder="Ex: 4 porções"
-                            className="w-full rounded-xl bg-foreground-dark text-sm text-background border-0 ring-0 p-2 focus:outline-none focus:ring-0"
+                            className="w-full rounded-md bg-foreground-dark text-sm text-background border-0 ring-0 p-2 focus:outline-none focus:ring-0"
                         />
                     </div>
                 </div>

@@ -125,8 +125,8 @@ export default function Footer(): React.ReactElement {
                 <div className="px-(--pc-padding) mx-auto text-sm flex flex-col md:flex-row items-center justify-between gap-2">
                     <span>© {year} Okorok. Todos os direitos reservados.</span>
                     <div className="flex items-center gap-4">
-                        <Link href="/privacy" className="text-sm hover:underline">Privacidade</Link>
-                        <Link href="/terms" className="text-sm hover:underline">Termos</Link>
+                        <Link href="/privacidade" className="text-sm hover:underline">Privacidade</Link>
+                        <Link href="/termos" className="text-sm hover:underline">Termos</Link>
                     </div>
                 </div>
             </div>

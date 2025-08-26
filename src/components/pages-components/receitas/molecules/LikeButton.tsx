@@ -80,7 +80,7 @@ export default function LikeButton({ recipeId, className = "" }: LikeButtonProps
     if (user?.id) {
         if (isFetching) {
             return (
-                <div className={`flex items-center gap-2 px-3 py-2 rounded-lg bg-background/20 animate-pulse ${className}`} aria-hidden="true">
+                <div className={`flex items-center gap-2 px-3 py-2 rounded-md bg-background/20 animate-pulse ${className}`} aria-hidden="true">
                     <div className="w-4 h-4 bg-foreground/30 rounded" />
                     <div className="w-6 h-4 bg-foreground/30 rounded" />
                 </div>
@@ -91,7 +91,7 @@ export default function LikeButton({ recipeId, className = "" }: LikeButtonProps
             <button
                 onClick={handleLike}
                 disabled={loading}
-                className={`flex items-center cursor-pointer gap-2 px-3 py-2 rounded-lg transition-colors ${
+                className={`flex items-center cursor-pointer gap-2 px-3 py-2 rounded-md transition-colors ${
                     isLiked 
                         ? 'bg-red-500 text-white' 
                         : 'bg-background text-foreground hover:bg-background/30'
@@ -104,7 +104,7 @@ export default function LikeButton({ recipeId, className = "" }: LikeButtonProps
 
     if (isFetching) {
         return (
-            <div className={`flex items-center gap-2 px-3 py-2 bg-background/20 rounded-lg animate-pulse ${className}`} aria-hidden="true">
+            <div className={`flex items-center gap-2 px-3 py-2 bg-background/20 rounded-md animate-pulse ${className}`} aria-hidden="true">
                 <div className="w-4 h-4 bg-foreground/30 rounded" />
                 <div className="w-6 h-4 bg-foreground/30 rounded" />
             </div>
@@ -112,7 +112,7 @@ export default function LikeButton({ recipeId, className = "" }: LikeButtonProps
     }
 
     return (
-        <div className={`flex items-center cursor-pointer gap-2 px-3 py-2 bg-background/20 rounded-lg ${className}`}>
+        <div className={`flex items-center cursor-pointer gap-2 px-3 py-2 bg-background/20 rounded-md ${className}`}>
             <Heart className="h-4 w-4 text-background" />
             <span className="text-sm text-background">{likesCount}</span>
         </div>

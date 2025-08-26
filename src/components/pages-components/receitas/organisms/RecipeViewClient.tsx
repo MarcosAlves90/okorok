@@ -79,7 +79,7 @@ export default function RecipeViewClient() {
             <div className="grid grid-cols-1 grid-rows-2 w-full h-full gap-4">
                 <div
                     id="bloco-1"
-                    className={`h-full rounded-xl overflow-hidden relative ${!recipe.imagemUrl ? 'bg-placeholder' : ''}`}
+                    className={`h-full rounded-md overflow-hidden relative ${!recipe.imagemUrl ? 'bg-placeholder' : ''}`}
                 >
                     {recipe.imagemUrl && (
                         <Image
@@ -107,12 +107,12 @@ export default function RecipeViewClient() {
                     </div>
                 </div>
 
-                <div id="bloco-2" className="h-full bg-foreground rounded-xl flex flex-col p-5">
+                <div id="bloco-2" className="h-full bg-foreground rounded-md flex flex-col p-5">
                     <div className="w-full flex flex-col items-start gap-4 h-full">
                         {recipe.categoria && (
                             <>
                                 <h3 className="text-sm font-medium">Categoria</h3>
-                                <div className="w-full rounded-xl bg-foreground-dark text-sm text-background p-2">
+                                <div className="w-full rounded-md bg-foreground-dark text-sm text-background p-2">
                                     {recipe.categoria}
                                 </div>
                             </>
@@ -121,7 +121,7 @@ export default function RecipeViewClient() {
                         {recipe.observacoes && (
                             <>
                                 <h3 className="text-sm font-medium">Observações</h3>
-                                <div className="w-full rounded-xl bg-foreground-dark text-sm text-background p-3">
+                                <div className="w-full rounded-md bg-foreground-dark text-sm text-background p-3">
                                     {recipe.observacoes}
                                 </div>
                             </>
@@ -152,14 +152,14 @@ export default function RecipeViewClient() {
                 </div>
             </div>
 
-            <div id="bloco-3" className="h-full bg-foreground w-full rounded-xl flex flex-col items-start gap-4 p-5 overflow-auto">
+            <div id="bloco-3" className="h-full bg-foreground w-full rounded-md flex flex-col items-start gap-4 p-5 overflow-auto">
                 <h3 className="text-lg font-semibold">Ingredientes</h3>
-                <div className="w-full rounded-xl bg-foreground-dark text-sm text-background p-3">
+                <div className="w-full rounded-md bg-foreground-dark text-sm text-background p-3">
                     <pre className="whitespace-pre-wrap font-sans">{recipe.ingredientes}</pre>
                 </div>
 
                 <h3 className="text-lg font-semibold">Modo de preparo</h3>
-                <div className="w-full rounded-xl bg-foreground-dark text-sm text-background p-3 flex-1">
+                <div className="w-full rounded-md bg-foreground-dark text-sm text-background p-3 flex-1">
                     <pre className="whitespace-pre-wrap font-sans">{recipe.modo}</pre>
                 </div>
             </div>
