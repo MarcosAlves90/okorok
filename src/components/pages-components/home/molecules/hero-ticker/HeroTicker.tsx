@@ -12,9 +12,6 @@ const PHRASES = [
 
 const REPEAT = 4;
 
-/**
- * Track simples que recebe itens já mapeados
- */
 function TickerTrack({ children }: { children: React.ReactNode }) {
     return (
         <div className={styles.track} aria-hidden={true}>

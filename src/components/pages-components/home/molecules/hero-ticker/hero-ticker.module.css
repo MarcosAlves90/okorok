@@ -35,8 +35,7 @@
     }
 }
 
-.ticker:focus .track,
-.ticker:hover .track {
+.ticker:focus .track {
     animation-play-state: paused;
 }
 

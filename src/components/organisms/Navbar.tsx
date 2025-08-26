@@ -24,7 +24,11 @@ export default function Navbar(): React.ReactElement {
     const toggleSearch = () => setSearchOpen((s) => !s);
 
     useEffect(() => {
-        if (searchOpen) searchInputRef.current?.focus();
+        if (searchOpen) {
+            setTimeout(() => {
+                searchInputRef.current?.focus();
+            }, 100);
+        }
     }, [searchOpen]);
 
     const handleSearchSubmit = (e: React.FormEvent) => {

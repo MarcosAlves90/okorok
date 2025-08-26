@@ -7,6 +7,7 @@ import { Clock, Users } from 'lucide-react'
 import RecipeViewSkeleton from '../molecules/RecipeViewSkeleton'
 import LikeButton from '../molecules/LikeButton'
 import BookmarkButton from '../molecules/BookmarkButton'
+import BackLink from '../atoms/BackLink'
 
 interface Recipe {
     id: number
@@ -75,7 +76,8 @@ export default function RecipeViewClient() {
     }
 
     return (
-        <div className="w-full h-full flex gap-4">
+        <div className="w-full h-full flex gap-4 relative">
+            <BackLink className="absolute -top-11 left-0" />
             <div className="grid grid-cols-1 grid-rows-2 w-full h-full gap-4">
                 <div
                     id="bloco-1"
