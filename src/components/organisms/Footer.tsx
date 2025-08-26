@@ -52,7 +52,9 @@ export default function Footer(): React.ReactElement {
                     </Link>
 
                     <div className="flex items-center gap-3">
-                        <Button type="button" size="md" aria-label="Solicitar ajuda">Preciso de ajuda</Button>
+                        <Link href="/ajuda">
+                            <Button type="button" size="md" aria-label="Ir para página de ajuda">Preciso de ajuda</Button>
+                        </Link>
                     </div>
                 </div>
             </div>

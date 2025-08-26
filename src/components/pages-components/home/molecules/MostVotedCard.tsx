@@ -1,38 +1,45 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link'
+import Image from 'next/image'
 
-interface MostVotedCardProps {
-    imageSrc: string;
-    title: string;
-    href?: string;
-    alt?: string;
+interface Props {
+    imageSrc: string
+    title: string
+    href?: string
+    alt?: string
 }
 
-export default function MostVotedCard({ imageSrc, title, href = "#", alt }: MostVotedCardProps): React.ReactElement {
-    const altText = alt ?? title;
-
+export default function MostVotedCard({ imageSrc, title, href = "#" }: Props) {
     return (
-        <article className="flex flex-col" aria-label={title}>
-            <figure className="bg-foreground pb-1 space-y-1 border-3 border-foreground rounded-t-lg flex flex-col justify-center items-center text-background">
-                <Image
-                    src={imageSrc}
-                    alt={altText}
-                    width={400}
-                    height={220}
-                    className="-mt-3 object-cover w-full h-auto rounded-t-lg"
-                    priority={false}
-                />
-                <figcaption className="text-background font-bold text-sm py-1 text-center">{title}</figcaption>
-            </figure>
+        <Link href={href}>
+            <div className="w-full pt-[100%] relative group cursor-pointer hover:opacity-80 transition-opacity duration-200">
+                <div className="absolute inset-0 bg-[#a66b58] rounded-lg shadow-inner overflow-hidden">
+                    <Image
+                        src={imageSrc}
+                        alt={title}
+                        fill
+                        className="object-cover"
+                        loading="lazy"
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                    />
 
-            <Link
-                href={href}
-                className="bg-background font-semibold hover:bg-foreground/30 transition-colors duration-200 ease-in-out py-3 text-sm border-2 border-foreground rounded-b-lg flex justify-center items-center text-foreground"
-                aria-label={`Ver receita: ${title}`}
-            >
-                Ver receita
-            </Link>
-        </article>
-    );
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/85" />
+
+                    <div className="absolute inset-0 p-3 flex flex-col justify-between">
+                        <div className="flex justify-end">
+                            <div className="bg-foreground rounded px-2 py-1 text-xs text-background">
+                                ⭐ Mais Votada
+                            </div>
+                        </div>
+
+                        <div className="space-y-1">
+                            <h3 className="text-white font-semibold text-sm line-clamp-2 leading-tight">
+                                {title}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Link>
+    )
 }

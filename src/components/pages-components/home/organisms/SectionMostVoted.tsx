@@ -1,5 +1,7 @@
-import React from 'react';
+'use client'
+import React, { useState, useEffect } from 'react';
 import MostVotedCard from "../molecules/MostVotedCard";
+import MostVotedCardSkeleton from "../molecules/MostVotedCardSkeleton";
 import { Star } from "lucide-react";
 
 type Item = {
@@ -19,6 +21,60 @@ const sampleData: Item[] = [
 ];
 
 export default function MostVoted(): React.ReactElement {
+    const [recipes, setRecipes] = useState<Item[]>(sampleData);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchMostVoted = async () => {
+            try {
+                const response = await fetch('/api/receitas/mais-votadas');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.success) {
+                        type ApiRecipe = {
+                            id: string;
+                            title: string;
+                            image: string;
+                            likes_count: number;
+                        };
+
+                        const fetchedRecipes = data.data.map((recipe: ApiRecipe) => ({
+                            id: recipe.id,
+                            title: recipe.title,
+                            image: recipe.image,
+                            href: `/receitas/${recipe.id}`
+                        }));
+                        
+                        // Se não há receitas, mantém os dados mocados
+                        setRecipes(fetchedRecipes.length > 0 ? fetchedRecipes : sampleData);
+                    }
+                }
+            } catch (error) {
+                console.error('Erro ao buscar receitas mais votadas:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchMostVoted();
+    }, []);
+
+    if (loading) {
+        return (
+            <section id="mais-votadas" className="px-(--pc-padding) py-15 space-y-10">
+                <h2 className="font-protest-strike text-foreground text-5xl flex items-center gap-3">
+                    <span>As Mais Votadas</span>
+                    <Star className="w-11 h-11 text-foreground fill-current" aria-hidden="true" stroke="none" fill="currentColor" />
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                    {Array.from({ length: 6 }).map((_, index) => (
+                        <MostVotedCardSkeleton key={index} />
+                    ))}
+                </div>
+            </section>
+        );
+    }
+
     return (
         <section id="mais-votadas" className="px-(--pc-padding) py-15 space-y-10">
             <h2 className="font-protest-strike text-foreground text-5xl flex items-center gap-3">
@@ -27,7 +83,7 @@ export default function MostVoted(): React.ReactElement {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                {sampleData.map((item) => (
+                {recipes.map((item) => (
                     <MostVotedCard key={item.id} imageSrc={item.image} title={item.title} href={item.href} />
                 ))}
             </div>
