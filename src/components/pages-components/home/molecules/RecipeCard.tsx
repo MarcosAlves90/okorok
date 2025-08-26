@@ -31,7 +31,7 @@ export default function RecipeCard({ recipe }: Props) {
 
     return (
         <Link href={`/receitas/${recipe.id}`}>
-            <div className="w-full pt-[100%] relative group cursor-pointer">
+            <div className="w-full pt-[100%] relative group cursor-pointer hover:opacity-80 transition-opacity duration-200">
                 <div className="absolute inset-0 bg-[#a66b58] rounded-lg shadow-inner overflow-hidden">
                     {recipe.imagemUrl ? (
                         <Image
@@ -47,12 +47,12 @@ export default function RecipeCard({ recipe }: Props) {
                         <div className="w-full h-full bg-gradient-to-br from-[#a66b58] to-[#8a3b1a]" />
                     )}
                     
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-200" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/85" />
                     
                     <div className="absolute inset-0 p-3 flex flex-col justify-between">
                         {recipe.categoria && (
                             <div className="flex justify-end">
-                                <div className="bg-white/20 rounded px-2 py-1 text-xs text-white">
+                                <div className="bg-foreground rounded px-2 py-1 text-xs text-background">
                                     {recipe.categoria}
                                 </div>
                             </div>
