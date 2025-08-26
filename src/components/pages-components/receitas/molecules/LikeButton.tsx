@@ -94,10 +94,10 @@ export default function LikeButton({ recipeId, className = "" }: LikeButtonProps
                 className={`flex items-center cursor-pointer gap-2 px-3 py-2 rounded-lg transition-colors ${
                     isLiked 
                         ? 'bg-red-500 text-white' 
-                        : 'bg-background/20 text-background hover:bg-background/30'
+                        : 'bg-background text-foreground hover:bg-background/30'
                 } disabled:opacity-50 ${className}`}>
-                <Heart className={`h-4 w-4 ${isLiked ? 'fill-current' : ''}`} />
-                <span className="text-sm">{likesCount}</span>
+                <Heart strokeWidth={3} className={`h-4 w-4 ${isLiked ? 'fill-current' : ''}`} />
+                <span className="text-sm font-bold">{likesCount}</span>
             </button>
         )
     }

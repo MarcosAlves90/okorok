@@ -1,5 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { Clock, Users } from 'lucide-react'
 import RecipeViewSkeleton from '../molecules/RecipeViewSkeleton'
@@ -78,13 +80,21 @@ export default function RecipeViewClient() {
                 <div
                     id="bloco-1"
                     className={`h-full rounded-xl overflow-hidden relative ${!recipe.imagemUrl ? 'bg-placeholder' : ''}`}
-                    style={recipe.imagemUrl ? {
-                        backgroundImage: `url(${recipe.imagemUrl})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center'
-                    } : undefined}
                 >
-                    <div className="relative z-10 h-full flex flex-col p-5">
+                    {recipe.imagemUrl && (
+                        <Image
+                            src={recipe.imagemUrl}
+                            alt={recipe.titulo}
+                            fill
+                            style={{ objectFit: 'cover', objectPosition: 'center' }}
+                            className="absolute inset-0 w-full h-full"
+                            priority
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                        />
+                    )}
+                    {recipe.imagemUrl && <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/85 z-10" />}
+                    <div className="relative z-20 h-full flex flex-col p-5">
                         <div className="w-full mt-auto">
                             <h1 className="w-full text-xl text-background font-semibold">
                                 {recipe.titulo}
@@ -95,8 +105,6 @@ export default function RecipeViewClient() {
                             </div>
                         </div>
                     </div>
-
-                    {recipe.imagemUrl && <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/85" />}
                 </div>
 
                 <div id="bloco-2" className="h-full bg-foreground rounded-xl flex flex-col p-5">
@@ -136,9 +144,9 @@ export default function RecipeViewClient() {
                         </div>
 
                         {recipe.authorName && (
-                            <div className="w-full text-xs text-background/70 mt-2">
-                                Por: {recipe.authorName}
-                            </div>
+                            <Link className="w-full text-xs text-background/70 mt-2 hover:underline" href={`/usuarios/${recipe.authorId}`}>
+                                Por: {recipe.authorName}                                
+                            </Link>
                         )}
                     </div>
                 </div>

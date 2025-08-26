@@ -94,10 +94,10 @@ export default function BookmarkButton({ recipeId, className = "" }: BookmarkBut
                 className={`flex items-center cursor-pointer gap-2 px-3 py-2 rounded-lg transition-colors ${
                     isBookmarked 
                         ? 'bg-blue-500 text-white' 
-                        : 'bg-background/20 text-background hover:bg-background/30'
+                        : 'bg-background text-foreground hover:bg-background/60'
                 } disabled:opacity-50 ${className}`}>
-                <Bookmark className={`h-4 w-4 ${isBookmarked ? 'fill-current' : ''}`} />
-                <span className="text-sm">{bookmarksCount}</span>
+                <Bookmark strokeWidth={3} className={`h-4 w-4 ${isBookmarked ? 'fill-current' : ''}`} />
+                <span className="text-sm font-bold">{bookmarksCount}</span>
             </button>
         )
     }
